@@ -1,36 +1,152 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js 프로젝트 구조 및 특징
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 1. 프로젝트 구조
+```
+my-app/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── navigation/
+│   │   │   │   ├── DesktopMenu.tsx
+│   │   │   │   ├── MobileMenu.tsx
+│   │   │   │   └── SubMenu.tsx
+│   │   │   ├── ui/
+│   │   │   │   └── SkeletonLoading.tsx
+│   │   │   └── common/
+│   │   ├── hooks/
+│   │   │   └── useMenuData.ts
+│   │   ├── layout/
+│   │   │   ├── Navigation.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   └── MainSlider.tsx
+│   │   └── page.tsx
+│   ├── styles/
+│   │   └── globals.css
+│   └── types/
+│       └── menu.ts
+├── public/
+│   └── data/
+│       └── menus.json
+├── package.json
+└── tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. 핵심 기술 스택
+- **프레임워크**: Next.js 13+, React 18
+- **언어**: TypeScript
+- **스타일링**: Tailwind CSS
+- **상태관리**: React Hooks
+- **빌드도구**: Webpack
+- **패키지관리**: npm/yarn
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. 주요 컴포넌트 구조
+1. **네비게이션 시스템**
+   - DesktopMenu: 데스크톱용 메뉴
+   - MobileMenu: 모바일용 메뉴
+   - SubMenu: 서브메뉴 처리
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **UI 컴포넌트**
+   - SkeletonLoading: 로딩 상태 표시
+   - 공통 UI 요소들
 
-## Learn More
+3. **레이아웃 컴포넌트**
+   - Navigation: 전체 네비게이션 관리
+   - Footer: 푸터 영역
+   - MainSlider: 메인 슬라이더
 
-To learn more about Next.js, take a look at the following resources:
+### 4. 데이터 관리
+1. **커스텀 훅**
+   - useMenuData: 메뉴 데이터 관리
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **타입 정의**
+   - menu.ts: 메뉴 관련 타입 정의
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **정적 데이터**
+   - menus.json: 메뉴 구조 데이터
 
-## Deploy on Vercel
+### 5. 주요 기능 및 특징
+1. **반응형 디자인**
+   - 데스크톱/모바일 대응
+   - 동적 레이아웃 조정
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **성능 최적화**
+   - 컴포넌트 코드 분할
+   - 동적 임포트
+   - 이미지 최적화
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **사용자 경험**
+   - 스켈레톤 로딩
+   - 애니메이션 효과
+   - 직관적 네비게이션
+
+4. **개발 편의성**
+   - TypeScript 타입 안전성
+   - 모듈화된 구조
+   - 재사용 가능한 컴포넌트
+
+### 6. 확장성 및 유지보수
+1. **모듈화**
+   - 독립적 컴포넌트
+   - 명확한 책임 분리
+   - 재사용 가능한 로직
+
+2. **테스트 용이성**
+   - 컴포넌트 단위 테스트
+   - 통합 테스트 지원
+   - 자동화된 테스트 환경
+
+3. **코드 품질**
+   - ESLint 설정
+   - Prettier 포맷팅
+   - TypeScript 엄격 모드
+
+### 7. 보안 및 성능
+1. **보안 기능**
+   - 타입 검증
+   - 입력 데이터 검증
+   - XSS 방지
+
+2. **성능 최적화**
+   - 서버 사이드 렌더링
+   - 정적 생성
+   - 캐싱 전략
+
+### 8. 개발 환경
+1. **개발 도구**
+   - VS Code 설정
+   - 디버깅 구성
+   - 린트 규칙
+
+2. **빌드 설정**
+   - 최적화된 빌드 구성
+   - 환경별 설정
+   - 배포 스크립트
+
+### 9. 미래 확장성
+1. **새로운 기능**
+   - 모듈식 구조로 확장 용이
+   - API 통합 준비
+   - 새로운 컴포넌트 추가 용이
+
+2. **성능 모니터링**
+   - 성능 메트릭 추적
+   - 사용자 행동 분석
+   - 오류 모니터링
+
+### 10. 운영 및 유지보수
+1. **문서화**
+   - 컴포넌트 문서
+   - API 문서
+   - 개발 가이드
+
+2. **배포 전략**
+   - CI/CD 파이프라인
+   - 자동화된 테스트
+   - 롤백 전략
+
+이러한 구조를 통해:
+1. 체계적인 코드 관리
+2. 효율적인 개발 프로세스
+3. 안정적인 서비스 운영
+4. 빠른 기능 확장
+5. 높은 유지보수성

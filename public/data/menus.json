@@ -1,0 +1,100 @@
+{
+  "mainMenus": [
+    {
+      "id": 1,
+      "name": "뉴스",
+      "url": "/news/category/politics",
+      "submenu": [
+        { "id": 101, "name": "국내정치", "url": "/news/category/politics/domestic" },
+        { "id": 102, "name": "국제정치", "url": "/news/category/politics/international" },
+        { "id": 103, "name": "정책", "url": "/news/category/politics/policy" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "스포츠",
+      "url": "/news/category/sports",
+      "submenu": [
+        { "id": 201, "name": "국내스포츠", "url": "/news/category/sports/domestic" },
+        { "id": 202, "name": "국제스포츠", "url": "/news/category/sports/international" },
+        { "id": 203, "name": "축구", "url": "/news/category/sports/football" },
+        { "id": 204, "name": "야구", "url": "/news/category/sports/baseball" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "연예",
+      "url": "/news/category/entertainment",
+      "submenu": [
+        { "id": 301, "name": "국내연예", "url": "/news/category/entertainment/domestic" },
+        { "id": 302, "name": "국제연예", "url": "/news/category/entertainment/international" },
+        { "id": 303, "name": "영화", "url": "/news/category/entertainment/movie" },
+        { "id": 304, "name": "드라마", "url": "/news/category/entertainment/drama" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "프리미엄",
+      "url": "/news/category/premium",
+      "submenu": [
+        { "id": 401, "name": "영화", "url": "/news/category/premium/movie" },
+        { "id": 402, "name": "음 악", "url": "/news/category/premium/music" },
+        { "id": 403, "name": "미술", "url": "/news/category/premium/art" },
+        { "id": 404, "name": "공연", "url": "/news/category/culture/performance" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "지역뉴스",
+      "url": "/news/category/local",
+      "submenu": [
+        { "id": 501, "name": "서울", "url": "/news/category/local/seoul" },
+        { "id": 502, "name": "경기", "url": "/news/category/local/gyeonggi" },
+        { "id": 503, "name": "인천", "url": "/news/category/local/incheon" },
+        { "id": 504, "name": "경남", "url": "/news/category/local/gyeongnam" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "주제별뉴스",
+      "url": "/news/category/topic",
+      "submenu": [
+        { "id": 601, "name": "IT", "url": "/news/category/topic/it" },
+        { "id": 602, "name": "모바일", "url": "/news/category/topic/mobile" },
+        { "id": 603, "name": "과학", "url": "/news/category/topic/science" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "동영상뉴스",
+      "url": "/news/category/video",
+      "submenu": [
+        { "id": 701, "name": "TV", "url": "/news/category/video/tv" },
+        { "id": 702, "name": "K-POP", "u  rl": "/news/category/video/kpop" },
+        { "id": 703, "name": "방송", "ur  l": "/news/category/video/broadcast" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "기부뉴스",
+      "url": "/news/category/donation",
+      "submenu": [
+        { "id": 801, "name": "기부뉴스", "url": "/news/category/donation/news" },
+        { "id": 802, "name": "기부뉴스", "url": "/news/category/donation/news" },
+        { "id": 803, "name": "기부뉴스", "url": "/news/category/donation/news" }
+      ]
+    }
+  ],
+  "utilityMenus": [
+    { "id": 1, "name": "로그인", "url": "/member/login" },
+    { "id": 2, "name": "회원가입", "url": "/member/register" },
+    { "id": 3, "name": "고객센터", "url": "/customer-service" }
+  ],
+  "footerMenus": [
+    { "id": 1, "name": "회사소개", "url": "/about" },
+    { "id": 2, "name": "이용약관", "url": "/terms" },
+    { "id": 3, "name": "개인정보처리방침", "url": "/privacy" },
+    { "id": 4, "name": "광고/제휴", "url": "/partnership" },
+    { "id": 5, "name": "고객센터", "url": "/customer-service" }
+  ]
+} 
