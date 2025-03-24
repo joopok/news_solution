@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useMainData } from '../hooks/useMainData';
@@ -11,6 +11,35 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+// 동적 임포트로 변경
+const TrendingNews = dynamic(() => import('./TrendingNews'), {
+  loading: () => <div className="bg-white rounded-lg shadow-sm p-3 h-[300px] animate-pulse"></div>,
+  ssr: false
+});
+
+const MainSlider = dynamic(() => import('./MainSlider'), {
+  loading: () => <div className="bg-white rounded-lg shadow-sm p-3 h-[300px] animate-pulse"></div>,
+  ssr: false
+});
+
+const PollContents = dynamic(() => import('./PollContents'), {
+  loading: () => <div className="bg-white rounded-lg shadow-sm p-3 h-[200px] animate-pulse"></div>,
+  ssr: true
+});
+
+// 로딩 스켈레톤 컴포넌트
+const NewsSkeleton = () => (
+  <div className="animate-pulse bg-white rounded-lg shadow-sm overflow-hidden">
+    <div className="h-32 bg-gray-200"></div>
+    <div className="p-3">
+      <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+      <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+    </div>
+  </div>
+);
 
 const pressLogos = {
   '헤럴드경제': '/press/placeholder.svg',
@@ -24,13 +53,57 @@ const pressLogos = {
   '서울경제': '/press/placeholder.svg'
 };
 
-export default function Main() {
+// 메인 컴포넌트
+const Main = () => {
   const { data, isLoading, error } = useMainData();
 
-  if (isLoading) return null;
-  if (error) return null;
+  // 데이터 메모이제이션
+  const mainData = useMemo(() => {
+    if (!data) return null;
+    return data.data;
+  }, [data]);
 
+  // 에러 핸들링 콜백 메모이제이션
+  const handleRetry = useCallback(() => {
+    window.location.reload();
+  }, []);
+
+  // 로딩 상태 렌더링
+  if (isLoading) {
     return (
+      <div className="bg-[#f7f7f7] py-3">
+        <div className="container mx-auto max-w-[1200px] px-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
+            {Array(3).fill(0).map((_, idx) => (
+              <NewsSkeleton key={`skeleton-${idx}`} />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // 에러 상태 렌더링
+  if (error || !mainData) {
+    return (
+      <div className="bg-[#f7f7f7] py-3">
+        <div className="container mx-auto max-w-[1200px] px-2">
+          <div className="bg-white rounded-lg shadow-sm p-6 text-center">
+            <h2 className="text-lg font-bold text-red-600 mb-2">오류가 발생했습니다</h2>
+            <p className="text-gray-600 mb-4">데이터를 불러오는 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.</p>
+            <button 
+              onClick={handleRetry}
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+            >
+              다시 시도
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
     <>
       {/* 메인 컨텐츠 영역 */}
       <div className="bg-[#f7f7f7] py-3">
@@ -473,4 +546,7 @@ export default function Main() {
       </div>
     </>
   );
-}
+};
+
+// React.memo로 감싸서 불필요한 리렌더링 방지
+export default React.memo(Main);
